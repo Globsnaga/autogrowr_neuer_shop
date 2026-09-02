@@ -1,0 +1,63 @@
+/* Shop, Warenkorb und Checkout — Klimakontroller-Shop (Medusa).
+   Nutzt ausschliesslich die Tokens/Klassen aus nocturne.css + app.css,
+   ergänzt nur, was für Cart-Drawer und Checkout-Formulare fehlt. */
+
+/* ── Cart-Icon in der Nav ───────────────────────────────────────────── */
+.ag-cart-icon { position: relative; }
+.ag-cart-badge {
+  position: absolute; top: -6px; right: -6px;
+  min-width: 18px; height: 18px; padding: 0 4px;
+  display: grid; place-items: center;
+  font-size: 10.5px; line-height: 1; font-weight: 600;
+  color: var(--color-bg); background: var(--color-accent);
+  border-radius: 999px;
+}
+
+/* ── Cart-Drawer ────────────────────────────────────────────────────── */
+.ag-cart-overlay {
+  position: fixed; inset: 0; z-index: 80;
+  display: flex; justify-content: flex-end;
+}
+.ag-cart-scrim {
+  position: absolute; inset: 0; border: 0; padding: 0; cursor: pointer;
+  background: color-mix(in srgb, #000 55%, transparent);
+}
+.ag-cart-panel {
+  position: relative; z-index: 1;
+  width: min(420px, 100%); height: 100%; overflow-y: auto;
+  display: flex; flex-direction: column; gap: 14px;
+  padding: 22px; background: var(--color-surface);
+  animation: ag-cart-slide-in .28s cubic-bezier(.22,.7,.3,1);
+}
+@keyframes ag-cart-slide-in {
+  from { transform: translateX(24px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+.ag-cart-head { display: flex; align-items: center; justify-content: space-between; }
+
+.ag-cart-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.ag-cart-line { display: flex; gap: 12px; align-items: flex-start; }
+.ag-cart-line-thumb {
+  width: 56px; height: 56px; flex: none; border-radius: var(--radius-md);
+  background: var(--color-bg); box-shadow: inset 0 0 0 1px var(--color-divider);
+  overflow: hidden;
+}
+.ag-cart-line-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.ag-cart-line-info { flex: 1; min-width: 0; }
+.ag-cart-line-title { font-size: 14px; }
+.ag-cart-line-variant { font-size: 12px; color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+
+.ag-cart-qty { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+.ag-cart-qty .btn-icon { width: 28px; height: 28px; }
+.ag-cart-qty span { min-width: 1.5em; text-align: center; font-size: 13px; }
+.ag-cart-remove { font-size: 12px; margin-left: 4px; }
+
+.ag-cart-summary {
+  display: flex; align-items: baseline; justify-content: space-between;
+  font-size: 14px; padding: 2px 0;
+}
+
+/* ── Checkout ───────────────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .ag-form-card { padding: 18px; }
+}
