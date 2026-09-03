@@ -213,7 +213,7 @@ function PaymentForm({ onBack }) {
 }
 
 function PaymentStep({ onBack }) {
-  const { cart, error, reloadCart } = useCart();
+  const { cart, error } = useCart();
   const [clientSecret, setClientSecret] = useState(null);
   const [localError, setLocalError] = useState('');
 
@@ -229,8 +229,12 @@ function PaymentStep({ onBack }) {
         }
         setClientSecret(secret);
       })
-      .catch((e) => setLocalError(e?.message || 'Zahlungssitzung konnte nicht gestartet werden.'))
-      .finally(() => reloadCart());
+      .catch((e) => setLocalError(e?.message || 'Zahlungssitzung konnte nicht gestartet werden.'));
+    // Kein reloadCart() hier: das setzt im CartContext kurz loading=true, wodurch
+    // CheckoutPage PaymentStep komplett unmountet (Ladebildschirm) und beim Zurück-
+    // rendern neu mountet — was diesen useEffect erneut auslöst und eine Endlos-
+    // schleife aus initiatePaymentSession-Aufrufen erzeugt. Der Cart selbst ändert
+    // sich durch das Anlegen einer Payment-Session nicht, ein Reload ist unnötig.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cart?.id]);
 

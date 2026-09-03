@@ -32,7 +32,7 @@ export default function ProductPage() {
     sdk.store.product
       .list({
         handle,
-        region_id: cart?.region?.id,
+        region_id: cart?.region_id,
         fields: '*variants.calculated_price,*options,*variants.options,+thumbnail,+description',
       })
       .then(({ products }) => {
@@ -59,7 +59,7 @@ export default function ProductPage() {
     return () => {
       active = false;
     };
-  }, [handle, cart?.region?.id]);
+  }, [handle, cart?.region_id]);
 
   const variant = useMemo(() => findMatchingVariant(product, selected), [product, selected]);
   const price = variant?.calculated_price;

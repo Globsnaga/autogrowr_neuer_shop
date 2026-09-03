@@ -13,7 +13,7 @@ export default function ProductGrid() {
     sdk.store.product
       .list({
         limit: 24,
-        region_id: cart?.region?.id,
+        region_id: cart?.region_id,
         fields: '*variants.calculated_price,+variants.inventory_quantity,+thumbnail',
       })
       .then(({ products: list }) => {
@@ -25,8 +25,9 @@ export default function ProductGrid() {
     return () => {
       active = false;
     };
-    // Erst laden, sobald der Cart (und damit die Region für Preise) bereitsteht.
-  }, [cart?.region?.id]);
+    // Erst laden, sobald der Cart (und damit region_id für die Preisberechnung) bereitsteht.
+    // region_id (nicht region?.id) — das Feld existiert immer, auch ohne die Relation zu expandieren.
+  }, [cart?.region_id]);
 
   if (error) {
     return (
