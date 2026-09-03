@@ -9,15 +9,25 @@ export default function ProductGrid() {
   const [error, setError] = useState('');
 
   useEffect(() => {
+    // Ohne region_id lehnt Medusa die Preisberechnung ab ("Missing required
+    // pricing context ... region_id"). cart ist beim ersten Render noch null
+    // (CartContext lädt gerade), also NICHT abfeuern, solange region_id fehlt —
+    // sonst bleibt der Fehler aus diesem ersten, unnötigen Versuch stehen,
+    // selbst nachdem der spätere Aufruf mit region_id erfolgreich war.
+    if (!cart?.region_id) return;
+
     let active = true;
+    setError('');
     sdk.store.product
       .list({
         limit: 24,
-        region_id: cart?.region_id,
+        region_id: cart.region_id,
         fields: '*variants.calculated_price,+variants.inventory_quantity,+thumbnail',
       })
       .then(({ products: list }) => {
-        if (active) setProducts(list);
+        if (!active) return;
+        setError('');
+        setProducts(list);
       })
       .catch((e) => {
         if (active) setError(e?.message || 'Produkte konnten nicht geladen werden.');
