@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /checkout
+Disallow: /bestellung/
+
+Sitemap: https://home.autogrowr.de/sitemap.xml
