@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { sdk, formatMoney } from '../lib/medusa.js';
 import { useCart } from '../context/CartContext.jsx';
 import Figure from '../components/Figure.jsx';
+import useSeo from '../hooks/useSeo.js';
 
 function findMatchingVariant(product, selected) {
   if (!product?.variants) return null;
@@ -63,6 +64,35 @@ export default function ProductPage() {
 
   const variant = useMemo(() => findMatchingVariant(product, selected), [product, selected]);
   const price = variant?.calculated_price;
+
+  useSeo({
+    title: product?.title,
+    description: product?.description
+      ? product.description.slice(0, 160)
+      : undefined,
+    path: `/shop/produkt/${handle}`,
+    image: product?.thumbnail,
+    type: 'product',
+    structuredData: product
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'Product',
+          name: product.title,
+          description: product.description || undefined,
+          image: product.thumbnail || undefined,
+          brand: { '@type': 'Brand', name: 'Autogrowr GmbH' },
+          offers: price
+            ? {
+                '@type': 'Offer',
+                url: `https://home.autogrowr.de/shop/produkt/${handle}`,
+                priceCurrency: (price.currency_code || '').toUpperCase(),
+                price: price.calculated_amount,
+                availability: 'https://schema.org/InStock',
+              }
+            : undefined,
+        }
+      : null,
+  });
 
   async function handleAdd() {
     if (!variant) return;

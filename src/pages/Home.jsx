@@ -8,10 +8,13 @@ import AppControl from '../components/AppControl.jsx';
 import Quality from '../components/Quality.jsx';
 import Shop from '../components/Shop.jsx';
 import Contact from '../components/Contact.jsx';
+import useSeo from '../hooks/useSeo.js';
 
 /** Die bisherige Einseiten-Landingpage — unverändert, nur aus App.jsx ausgelagert. */
 export default function Home() {
   const location = useLocation();
+
+  useSeo({ path: '/' });
 
   // Nav-Links verweisen jetzt auf "/#kontroller" o.ä. (auch von /shop aus erreichbar).
   // React Router springt bei client-seitiger Navigation nicht automatisch zum Anker,

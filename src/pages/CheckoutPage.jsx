@@ -4,6 +4,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useCart } from '../context/CartContext.jsx';
 import { sdk, formatMoney } from '../lib/medusa.js';
+import useSeo from '../hooks/useSeo.js';
 
 const stripeKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY;
 const stripePromise = stripeKey ? loadStripe(stripeKey) : null;
@@ -276,6 +277,8 @@ function PaymentStep({ onBack }) {
 export default function CheckoutPage() {
   const { cart, loading } = useCart();
   const [step, setStep] = useState('address');
+
+  useSeo({ title: 'Kasse', path: '/checkout', noindex: true });
 
   const items = cart?.items || [];
   const summary = useMemo(

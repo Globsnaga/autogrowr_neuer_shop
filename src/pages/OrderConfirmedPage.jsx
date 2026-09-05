@@ -1,10 +1,13 @@
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { formatMoney } from '../lib/medusa.js';
+import useSeo from '../hooks/useSeo.js';
 
 export default function OrderConfirmedPage() {
   const { id } = useParams();
   const { state } = useLocation();
   const order = state?.order;
+
+  useSeo({ title: 'Bestellung bestätigt', path: `/bestellung/${id}`, noindex: true });
 
   return (
     <main id="top">
