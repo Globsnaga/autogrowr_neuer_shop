@@ -251,6 +251,43 @@ a:hover { color: var(--color-accent-300); }
 }
 .ag-point-rule { margin-top: 9px; width: 16px; height: 1px; background: var(--color-accent); flex: none; }
 
+/* ── Rundgang ───────────────────────────────────────────────── */
+.ag-tour-track {
+  position: relative;
+  margin-top: 44px;
+  display: grid;
+  gap: clamp(38px, 5vw, 58px);
+  padding-left: 58px;
+}
+.ag-tour-line {
+  position: absolute; left: 21px; top: 6px; bottom: 6px; width: 2px;
+  background: var(--color-divider); border-radius: 1px; overflow: hidden;
+}
+.ag-tour-line-fill {
+  position: absolute; inset: 0; transform-origin: top;
+  transform: scaleY(var(--tour-progress, 0));
+  background: linear-gradient(to bottom, var(--color-accent), var(--color-accent-300));
+  transition: transform .12s linear;
+}
+.ag-tour-station { position: relative; }
+.ag-tour-dot {
+  position: absolute; left: -58px; top: 0;
+  width: 44px; height: 44px; display: grid; place-items: center;
+  border-radius: 50%; background: var(--color-surface);
+  box-shadow: 0 0 0 1px var(--color-divider);
+}
+.ag-tour-title { font-size: 19px; margin: 8px 0 6px; }
+.ag-tour-text {
+  margin: 0; font-size: 14.5px; line-height: 1.55; max-width: 46ch;
+  color: color-mix(in srgb, var(--color-text) 68%, transparent);
+}
+@media (max-width: 560px) {
+  .ag-tour-track { padding-left: 48px; gap: 34px; }
+  .ag-tour-line { left: 17px; }
+  .ag-tour-dot { left: -48px; width: 36px; height: 36px; }
+  .ag-tour-dot svg { width: 17px; height: 17px; }
+}
+
 /* ── Qualitaet ──────────────────────────────────────────────── */
 .ag-quality-grid {
   margin-top: 44px;
@@ -349,4 +386,5 @@ a:hover { color: var(--color-accent-300); }
   html { scroll-behavior: auto; }
   .ag-bloom, .ag-scroll-line { animation: none; }
   .ag-product { transition: none; }
+  .ag-tour-line-fill { transition: none; }
 }

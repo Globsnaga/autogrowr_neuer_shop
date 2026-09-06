@@ -9,7 +9,7 @@ export default function Quality() {
           <Kicker>Qualität aus Deutschland</Kicker>
           <h2 className="ag-h2">Hochwertige Hardware, intuitive Software</h2>
           <p className="ag-body">
-            Der Klimakontroller wird von der Autogrowr GmbH in Dernbach entwickelt. Unser Anspruch:
+            Der Klimakontroller wird von der Autogrowr GmbH in Deutschland entwickelt. Unser Anspruch:
             eine Lösung, die im täglichen Einsatz zuverlässig funktioniert.
           </p>
         </div>

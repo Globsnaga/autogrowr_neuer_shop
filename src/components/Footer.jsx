@@ -39,7 +39,7 @@ export default function Footer() {
               <span>AUTOGROWR</span>
             </div>
             <p className="ag-footer-blurb">
-              Hardware und Nährstoffe für den Indoor-Anbau. Entwickelt in Dernbach, Deutschland.
+              Hardware und Nährstoffe für den Indoor-Anbau. Made in Germany.
             </p>
           </div>
 

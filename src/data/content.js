@@ -13,6 +13,7 @@ export const navLinks = [
   { href: '#kontroller', label: 'Klimakontroller' },
   { href: '#technik', label: 'Technik' },
   { href: '#app', label: 'App' },
+  { href: '#rundgang', label: 'Rundgang' },
   { href: '#firma', label: 'Über uns' },
   { href: '#sortiment', label: 'Dünger' },
 ];
@@ -21,7 +22,7 @@ export const specs = [
   { value: '4', unit: 'in 1', label: 'Klima, Licht, Luft und Zubehör aus einem Gerät' },
   { value: '24', unit: '/7', label: 'Dauerbetrieb in warmer, feuchter Umgebung' },
   { value: '2026', unit: '', label: 'Geplanter Marktstart' },
-  { value: '100', unit: '%', label: 'Entwickelt in Dernbach, Deutschland' },
+  { value: '100', unit: '%', label: 'Made in Germany' },
 ];
 
 export const controls = [
@@ -85,6 +86,40 @@ export const products = [
     title: 'Green Grower Blüte-Booster',
     price: '24,99 € – 165,99 €',
     href: 'https://shop.green-grower.de/produkt/green-grower-bluete-booster-bluehstimulator/',
+  },
+];
+
+export const tourStations = [
+  {
+    title: 'Abluft',
+    text: 'Warme, feuchte Luft strömt oben ab. Der Klimakontroller regelt die Drehzahl nach echten Messwerten — nicht nach starrem Zeitplan.',
+    icon: ['M3 8h11a3 3 0 1 0-3-3', 'M3 12.5h15a3 3 0 1 1-3 3', 'M3 17h8'],
+  },
+  {
+    title: 'Zuluft',
+    text: 'Frische Luft strömt kontrolliert nach, damit CO₂-Gehalt und Sauerstoffversorgung im Gleichgewicht bleiben.',
+    icon: ['M12 3v9', 'M8 8l4 4 4-4', 'M5 20h14'],
+  },
+  {
+    title: 'Licht',
+    text: 'Lichtzyklen laufen exakt nach Plan — Wachstums- und Blütephase wechseln automatisch, ganz ohne Zeitschaltuhr.',
+    icon: ['M12 2.6v2.2', 'M12 19.2v2.2', 'M2.6 12h2.2', 'M19.2 12h2.2', 'M5.4 5.4l1.6 1.6', 'M17 17l1.6 1.6', 'M18.6 5.4 17 7', 'M7 17l-1.6 1.6'],
+    circle: true,
+  },
+  {
+    title: 'Klimakontroller',
+    text: 'Ein Gerät verbindet alle Sensoren und Aktoren: Temperatur, Luftfeuchtigkeit, Licht und Luftzirkulation laufen als ein System zusammen.',
+    icon: ['M4 4h16v16H4Z', 'M9 9h6v6H9Z'],
+  },
+  {
+    title: 'Töpfe & Substrat',
+    text: 'Am Topf entscheidet sich vieles: Substrat und Bewässerung wirken direkt auf Wurzelwachstum und Nährstoffaufnahme.',
+    icon: ['M6 8h12', 'M7 8l1.3 10.4A2 2 0 0 0 10.3 20h3.4a2 2 0 0 0 2-1.6L17 8'],
+  },
+  {
+    title: 'Dünger & Nährstoffe',
+    text: 'Wuchs- und Blütedünger, CalMag und Booster liefern genau die Nährstoffe, die die Pflanze in ihrer aktuellen Phase braucht.',
+    icon: ['M12 3.5c3.2 3.6 5.5 6.4 5.5 9.1A5.5 5.5 0 0 1 6.5 12.6c0-2.7 2.3-5.5 5.5-9.1Z'],
   },
 ];
 

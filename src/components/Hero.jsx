@@ -35,7 +35,7 @@ export default function Hero() {
           <div className="ag-tag-row">
             <span className="tag tag-neutral">Marktstart 2026</span>
             <span className="tag tag-neutral">App-Steuerung</span>
-            <span className="tag tag-neutral">Entwickelt in Dernbach</span>
+            <span className="tag tag-neutral">Deutsche Qualität</span>
           </div>
         </div>
 

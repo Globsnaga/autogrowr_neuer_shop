@@ -5,6 +5,7 @@ import Specs from '../components/Specs.jsx';
 import ControlGrid from '../components/ControlGrid.jsx';
 import Climate from '../components/Climate.jsx';
 import AppControl from '../components/AppControl.jsx';
+import TentTour from '../components/TentTour.jsx';
 import Quality from '../components/Quality.jsx';
 import Shop from '../components/Shop.jsx';
 import Contact from '../components/Contact.jsx';
@@ -32,6 +33,7 @@ export default function Home() {
       <ControlGrid />
       <Climate />
       <AppControl />
+      <TentTour />
       <Quality />
       <Shop />
       <Contact />
