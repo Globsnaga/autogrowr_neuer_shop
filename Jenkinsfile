@@ -13,17 +13,14 @@
  *      bricht in Produktion.
  *   3. Falls der Jenkins-Job NICHT als Multibranch-Pipeline läuft, die
  *      "when { branch 'main' }"-Bedingungen unten entfernen bzw. anpassen.
- *   4. Unter "Manage Jenkins -> Tools -> NodeJS installations" eine
- *      Installation namens "Node20" anlegen (Version 20.x, "Install
- *      automatically"). Setzt das NodeJS-Plugin voraus.
+ *
+ * Node.js ist direkt im Jenkins-Image installiert (siehe ~/jenkins/Dockerfile)
+ * statt über das NodeJS-Plugin/tools{}-Block eingebunden — Letzteres löste
+ * bei uns eine NullPointerException in der Pipeline-Validierung aus.
  */
 
 pipeline {
   agent any
-
-  tools {
-    nodejs 'Node20'
-  }
 
   options {
     timestamps()
