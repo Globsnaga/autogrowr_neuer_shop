@@ -44,9 +44,12 @@ test('kompletter Checkout mit Stripe-Testkarte', async ({ page }) => {
   await page.getByLabel('Stadt').fill('Dernbach');
   await page.getByRole('button', { name: 'Weiter zum Versand' }).click();
 
-  // 4. Versandart wählen (erste verfügbare Option reicht für den Test)
+  // 4. Versandart wählen (erste verfügbare Option reicht für den Test).
+  // Das <input type="radio"> ist per CSS visuell versteckt — sichtbar und
+  // klickbar ist nur das umschließende <label class="seg-opt">, das den
+  // Radio-Button per nativer Browser-Semantik mit aktiviert.
   await expect(page.getByRole('heading', { name: 'Versandart' })).toBeVisible();
-  await page.locator('input[type="radio"][name="shipping"]').first().check();
+  await page.locator('label.seg-opt').first().click();
   await page.getByRole('button', { name: 'Weiter zur Zahlung' }).click();
 
   // 5. Stripe Payment Element befüllen (Testkarte, immer erfolgreich)
