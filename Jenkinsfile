@@ -11,8 +11,8 @@
  *      .env.example im Repo-Root für die benötigten Variablen). Ohne diese
  *      Datei fehlen VITE_STRIPE_PUBLISHABLE_KEY etc. im Build und der Shop
  *      bricht in Produktion.
- *   3. Falls der Jenkins-Job NICHT als Multibranch-Pipeline läuft, die
- *      "when { branch 'main' }"-Bedingungen unten entfernen bzw. anpassen.
+ *   3. Falls der Standard-Branch bei euch nicht "master" heißt, die
+ *      "when { branch 'master' }"-Bedingungen unten anpassen.
  *
  * Node.js ist direkt im Jenkins-Image installiert (siehe ~/jenkins/Dockerfile)
  * statt über das NodeJS-Plugin/tools{}-Block eingebunden — Letzteres löste
@@ -65,11 +65,11 @@ pipeline {
     stage('E2E: Checkout-Flow') {
       // Läuft bewusst nicht bei jedem Push: jeder Lauf legt eine echte
       // Testbestellung im Medusa-Admin an und verschickt die
-      // Owner-Benachrichtigungsmail. Nur auf main bzw. per Zeitplan (siehe
+      // Owner-Benachrichtigungsmail. Nur auf master bzw. per Zeitplan (siehe
       // separaten "cron"-Trigger, den Jenkins für Multibranch-Jobs anbietet).
       when {
         anyOf {
-          branch 'main'
+          branch 'master'
           triggeredBy 'TimerTrigger'
         }
       }
@@ -94,7 +94,7 @@ pipeline {
     }
 
     stage('Deploy') {
-      when { branch 'main' }
+      when { branch 'master' }
       steps {
         sh """
           rsync -a --delete \
