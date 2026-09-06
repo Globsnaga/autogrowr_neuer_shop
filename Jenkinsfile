@@ -29,10 +29,13 @@ pipeline {
   }
 
   environment {
-    // TODO: an eure Server-Konfiguration anpassen — siehe Hinweis oben.
+    // Frontend und Backend teilen sich dieselbe docker-compose.yml im
+    // Backend-Repo (dort auch die Traefik-Router autogrowr_frontend/
+    // autogrowr_frontend-secure) — daher der Pfad unter /srv/autogrowr-backend,
+    // dem Mount-Alias für ~/medusa/autogrowr-backend im Jenkins-Container.
     DEPLOY_DIR      = '/srv/autogrowr_shop/autogrowr_neuer_shop'
-    COMPOSE_FILE    = '/srv/autogrowr_shop/docker-compose.yml'
-    COMPOSE_SERVICE = 'frontend'
+    COMPOSE_FILE    = '/srv/autogrowr-backend/docker-compose.yml'
+    COMPOSE_SERVICE = 'autogrowr_frontend'
   }
 
   stages {
