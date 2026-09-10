@@ -19,7 +19,7 @@ export default function Climate() {
           </p>
         </div>
         <div data-reveal="100">
-          <Figure src={media.growbox} alt="Growbox von innen" ratio="5 / 4" hint="Growbox-Innenaufnahme, dunkel belichtet" />
+          <Figure src={media.growbox} alt="Growbox von innen" ratio="5 / 4" hint="" />
         </div>
       </div>
     </section>

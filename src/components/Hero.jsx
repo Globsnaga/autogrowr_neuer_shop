@@ -46,7 +46,7 @@ export default function Hero() {
             alt="Green Grower Klimakontroller 2026"
             ratio="4 / 4.4"
             radius="14px"
-            hint="Produktfoto Klimakontroller — am besten auf schwarzem Grund"
+            hint=""
           />
         </div>
       </div>
